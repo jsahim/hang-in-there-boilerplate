@@ -109,3 +109,15 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+var imageIndexNum = getRandomIndex(images);
+var titleIndexNum = getRandomIndex(titles);
+var quoteIndexNum = getRandomIndex(quotes);
+
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+
+posterImage.src = images[imageIndexNum];
+posterTitle.innerText = titles[titleIndexNum];
+posterQuote.innerText = quotes[quoteIndexNum];
+
