@@ -100,7 +100,6 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
-
 // event listeners go here 👇
 
 // functions and event handlers go here 👇
@@ -120,4 +119,3 @@ var posterQuote = document.querySelector('.poster-quote');
 posterImage.src = images[imageIndexNum];
 posterTitle.innerText = titles[titleIndexNum];
 posterQuote.innerText = quotes[quoteIndexNum];
-
