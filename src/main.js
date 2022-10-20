@@ -98,16 +98,9 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
-
-// event listeners go here 👇
-
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
 
 var imageIndexNum = getRandomIndex(images);
 var titleIndexNum = getRandomIndex(titles);
@@ -116,8 +109,26 @@ var quoteIndexNum = getRandomIndex(quotes);
 var posterImage = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+var randomPosterButton = document.querySelector('.show-random')
 
 posterImage.src = images[imageIndexNum];
 posterTitle.innerText = titles[titleIndexNum];
 posterQuote.innerText = quotes[quoteIndexNum];
 
+// event listeners go here 👇
+randomPosterButton.addEventListener("click", getRandomPoster);
+
+// functions and event handlers go here 👇
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function getRandomPoster() {
+var imageIndexNum = getRandomIndex(images);
+var titleIndexNum = getRandomIndex(titles);
+var quoteIndexNum = getRandomIndex(quotes);
+  posterImage.src = images[imageIndexNum];
+  posterTitle.innerText = titles[titleIndexNum];
+  posterQuote.innerText = quotes[quoteIndexNum];
+}
