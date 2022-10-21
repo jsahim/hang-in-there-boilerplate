@@ -115,8 +115,17 @@ posterImage.src = images[imageIndexNum];
 posterTitle.innerText = titles[titleIndexNum];
 posterQuote.innerText = quotes[quoteIndexNum];
 
+
+var hiddenForm = document.querySelector('.poster-form')
+var mainPoster = document.querySelector('.main-poster')
+var makePosterButton = document.querySelector('.show-form')
+var savedPostersPage = document.querySelector('.saved-posters')
+var showSavedButton = document.querySelector('.show-saved')
+
 // event listeners go here 👇
 randomPosterButton.addEventListener("click", getRandomPoster);
+makePosterButton.addEventListener("click", getForm);
+showSavedButton.addEventListener("click", getSavedPosters);
 
 // functions and event handlers go here 👇
 
@@ -125,10 +134,20 @@ function getRandomIndex(array) {
 }
 
 function getRandomPoster() {
-var imageIndexNum = getRandomIndex(images);
-var titleIndexNum = getRandomIndex(titles);
-var quoteIndexNum = getRandomIndex(quotes);
+  var imageIndexNum = getRandomIndex(images);
+  var titleIndexNum = getRandomIndex(titles);
+  var quoteIndexNum = getRandomIndex(quotes);
   posterImage.src = images[imageIndexNum];
   posterTitle.innerText = titles[titleIndexNum];
   posterQuote.innerText = quotes[quoteIndexNum];
+}
+
+function getForm(){
+  hiddenForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
+}
+
+function getSavedPosters(){
+  savedPostersPage.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
 }
