@@ -121,12 +121,16 @@ var mainPoster = document.querySelector('.main-poster')
 var makePosterButton = document.querySelector('.show-form')
 var savedPostersPage = document.querySelector('.saved-posters')
 var showSavedButton = document.querySelector('.show-saved')
+var backToMainButton = document.querySelector('.back-to-main')
+var takeMeBackButton = document.querySelector('.show-main')
+
 
 // event listeners go here 👇
 randomPosterButton.addEventListener("click", getRandomPoster);
 makePosterButton.addEventListener("click", getForm);
 showSavedButton.addEventListener("click", getSavedPosters);
-
+backToMainButton.addEventListener("click", getMainFromSavedPosters);
+takeMeBackButton.addEventListener("click", getMainFromHiddenForm);
 // functions and event handlers go here 👇
 
 function getRandomIndex(array) {
@@ -151,3 +155,18 @@ function getSavedPosters(){
   savedPostersPage.classList.remove('hidden');
   mainPoster.classList.add('hidden');
 }
+
+function getMainFromSavedPosters() {
+  mainPoster.classList.remove('hidden');
+  savedPostersPage.classList.add('hidden');
+}
+ 
+function getMainFromHiddenForm() {
+  mainPoster.classList.remove('hidden');
+  hiddenForm.classList.add('hidden');
+}
+
+// hiddenForm
+//create variable for all buttons we need to access
+//create new event listeners for buttons (if statements?)
+
