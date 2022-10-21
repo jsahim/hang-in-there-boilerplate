@@ -115,8 +115,25 @@ posterImage.src = images[imageIndexNum];
 posterTitle.innerText = titles[titleIndexNum];
 posterQuote.innerText = quotes[quoteIndexNum];
 
+/* 
+//“Make Your Own Poster”//--->
+--When a user clicks the “Make Your Own Poster” button,--
+we should see the form, and the main poster should be hidden
+*/
+var hiddenForm = document.querySelector('.poster-form')
+var mainPoster = document.querySelector('.main-poster')
+var savedPoster = document.querySelector('.saved-posters')
+
+
+//“Make Your Own Poster”//--->
+var makePosterButton = document.querySelector('.show-form')
+
+
 // event listeners go here 👇
 randomPosterButton.addEventListener("click", getRandomPoster);
+
+//“Make Your Own Poster”//--->
+makePosterButton.addEventListener("click", triggerForm);
 
 // functions and event handlers go here 👇
 
@@ -125,10 +142,16 @@ function getRandomIndex(array) {
 }
 
 function getRandomPoster() {
-var imageIndexNum = getRandomIndex(images);
-var titleIndexNum = getRandomIndex(titles);
-var quoteIndexNum = getRandomIndex(quotes);
+  var imageIndexNum = getRandomIndex(images);
+  var titleIndexNum = getRandomIndex(titles);
+  var quoteIndexNum = getRandomIndex(quotes);
   posterImage.src = images[imageIndexNum];
   posterTitle.innerText = titles[titleIndexNum];
   posterQuote.innerText = quotes[quoteIndexNum];
+}
+
+//“Make Your Own Poster”//--->
+function triggerForm(){
+  hiddenForm.classList.remove('hidden');
+  mainPoster.classList.add('hidden');
 }
