@@ -1,3 +1,4 @@
+
 // query selector variables go here 👇
 
 // we've provided you with some data to work with 👇
@@ -115,7 +116,6 @@ posterImage.src = images[imageIndexNum];
 posterTitle.innerText = titles[titleIndexNum];
 posterQuote.innerText = quotes[quoteIndexNum];
 
-
 var hiddenForm = document.querySelector('.poster-form')
 var mainPoster = document.querySelector('.main-poster')
 var makePosterButton = document.querySelector('.show-form')
@@ -124,6 +124,10 @@ var showSavedButton = document.querySelector('.show-saved')
 var backToMainButton = document.querySelector('.back-to-main')
 var takeMeBackButton = document.querySelector('.show-main')
 
+var showMyPosterButton = document.querySelector('.make-poster')
+var inputImage = document.getElementById('poster-image-url')
+var inputTitle = document.getElementById('poster-title')
+var inputQuote = document.getElementById('poster-quote')
 
 // event listeners go here 👇
 randomPosterButton.addEventListener("click", getRandomPoster);
@@ -131,8 +135,9 @@ makePosterButton.addEventListener("click", getForm);
 showSavedButton.addEventListener("click", getSavedPosters);
 backToMainButton.addEventListener("click", getMainFromSavedPosters);
 takeMeBackButton.addEventListener("click", getMainFromHiddenForm);
-// functions and event handlers go here 👇
+showMyPosterButton.addEventListener("click", createNewPoster);
 
+// functions and event handlers go here 👇
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -146,12 +151,12 @@ function getRandomPoster() {
   posterQuote.innerText = quotes[quoteIndexNum];
 }
 
-function getForm(){
+function getForm() {
   hiddenForm.classList.remove('hidden');
   mainPoster.classList.add('hidden');
 }
 
-function getSavedPosters(){
+function getSavedPosters() {
   savedPostersPage.classList.remove('hidden');
   mainPoster.classList.add('hidden');
 }
@@ -166,7 +171,19 @@ function getMainFromHiddenForm() {
   hiddenForm.classList.add('hidden');
 }
 
-// hiddenForm
-//create variable for all buttons we need to access
-//create new event listeners for buttons (if statements?)
+function createNewPoster(event) {
+  event.preventDefault()
+  mainPoster.classList.remove('hidden');
+  savedPostersPage.classList.add('hidden');
+  hiddenForm.classList.add('hidden');
+  currentPoster = new Poster(posterImage, posterTitle, posterQuote)
+  posterImage.src = inputImage.value;
+  posterTitle.innerText = inputTitle.value;
+  posterQuote.innerText = inputQuote.value;
+  images.push(inputImage.value)
+  titles.push(inputTitle.value)
+  quotes.push(inputQuote.value)
+}
 
+//On the the new poster form view, users should be able to fill out the three input fields and 
+//then hit the Show My Poster button
