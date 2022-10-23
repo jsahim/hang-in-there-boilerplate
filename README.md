@@ -9,7 +9,7 @@
 - The user must first create GitHub account: 
 - Fork the following repository: https://github.com/jsahim/hang-in-there-pairs
 - In terminal, they will need to run the following to clone down the GitHub repository:
-    - git clone https://github.com/jsahim/hang-in-there-pairs
+    - git clone git@github.com:jsahim/hang-in-there-pairs.git
 - Once the repository has been cloned to their local machine, they can open it in their preferred text editor
 
 ### Preview of App:
