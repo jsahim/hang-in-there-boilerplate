@@ -133,13 +133,13 @@ var randomPosterButton = document.querySelector('.show-random')
 // event listeners go here 👇
 
 addEventListener('load', createCurrentPoster)
-randomPosterButton.addEventListener("click", getRandomPoster);
-makePosterButton.addEventListener("click", getForm);
-showSavedButton.addEventListener("click", getSavedPosters);
-backToMainButton.addEventListener("click", getMainFromSavedPosters);
-takeMeBackButton.addEventListener("click", getMainFromHiddenForm);
-showMyPosterButton.addEventListener("click", createNewPoster);
-savePosterButton.addEventListener("click", saveCurrentPoster);
+randomPosterButton.addEventListener('click', getRandomPoster);
+makePosterButton.addEventListener('click', getForm);
+showSavedButton.addEventListener('click', getSavedPosters);
+backToMainButton.addEventListener('click', getMainFromSavedPosters);
+takeMeBackButton.addEventListener('click', getMainFromHiddenForm);
+showMyPosterButton.addEventListener('click', createNewPoster);
+savePosterButton.addEventListener('click', saveCurrentPoster);
 
 // functions and event handlers go here 👇
 
