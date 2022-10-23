@@ -102,7 +102,6 @@ var quotes = [
 
 var savedPosters = [];
 var currentPoster;
-
 var imageIndexNum = getRandomIndex(images);
 var titleIndexNum = getRandomIndex(titles);
 var quoteIndexNum = getRandomIndex(quotes);
@@ -129,26 +128,41 @@ var inputImage = document.getElementById('poster-image-url')
 var inputTitle = document.getElementById('poster-title')
 var inputQuote = document.getElementById('poster-quote')
 
+var savePosterButton = document.querySelector('.save-poster')
+
+var savedPostersGrid = document.querySelector('.saved-posters-grid')
+
 // event listeners go here 👇
+addEventListener('load', createCurrentPoster)
 randomPosterButton.addEventListener("click", getRandomPoster);
 makePosterButton.addEventListener("click", getForm);
 showSavedButton.addEventListener("click", getSavedPosters);
 backToMainButton.addEventListener("click", getMainFromSavedPosters);
 takeMeBackButton.addEventListener("click", getMainFromHiddenForm);
 showMyPosterButton.addEventListener("click", createNewPoster);
+savePosterButton.addEventListener("click", saveCurrentPoster);
+
+
 
 // functions and event handlers go here 👇
+
+function createCurrentPoster() {
+  currentPoster = new Poster (posterImage.src, posterTitle.innerText, posterQuote.innerText)
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 function getRandomPoster() {
+  // currentPoster = new Poster (posterImage.src, posterTitle.innerText, posterQuote.innerText)
   var imageIndexNum = getRandomIndex(images);
   var titleIndexNum = getRandomIndex(titles);
   var quoteIndexNum = getRandomIndex(quotes);
   posterImage.src = images[imageIndexNum];
   posterTitle.innerText = titles[titleIndexNum];
   posterQuote.innerText = quotes[quoteIndexNum];
+  createCurrentPoster()
 }
 
 function getForm() {
@@ -159,6 +173,7 @@ function getForm() {
 function getSavedPosters() {
   savedPostersPage.classList.remove('hidden');
   mainPoster.classList.add('hidden');
+  displaySavedPosters()
 }
 
 function getMainFromSavedPosters() {
@@ -176,7 +191,7 @@ function createNewPoster(event) {
   mainPoster.classList.remove('hidden');
   savedPostersPage.classList.add('hidden');
   hiddenForm.classList.add('hidden');
-  currentPoster = new Poster(posterImage, posterTitle, posterQuote)
+  currentPoster = new Poster(posterImage.src, posterTitle.innerText, posterQuote.innerText)
   posterImage.src = inputImage.value;
   posterTitle.innerText = inputTitle.value;
   posterQuote.innerText = inputQuote.value;
@@ -185,5 +200,24 @@ function createNewPoster(event) {
   quotes.push(inputQuote.value)
 }
 
-//On the the new poster form view, users should be able to fill out the three input fields and 
-//then hit the Show My Poster button
+function saveCurrentPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  };
+  console.log(savedPosters)
+  return savedPosters;
+}
+
+function displaySavedPosters() {
+  savedPostersGrid.innerHTML = " ";
+  for (var i = 0; i < savedPosters.length; i++) {
+    savedPostersGrid.innerHTML += 
+    `<article class="mini-poster" id="${savedPosters[i].id}">
+    <img class="mini-poster-img" src="${savedPosters[i].imageURL}" alt="nothing to see here">
+    <h2 class="mini-poster-title">"${savedPosters[i].title}"</h2>
+    <h4 class="mini-poster-quote">"${savedPosters[i].quote}"</h4>
+    </article>`
+  }
+}
+
+
